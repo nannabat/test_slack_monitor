@@ -34,7 +34,7 @@ def onChange(ev):
     #print json.dumps(changed_values_json, indent=4)
     HOSTNAME = socket.gethostname()
     ALERT = 'File monitoring alert: value/values in file: %s on host %s' %(ABS_PATH_AGENT_CONF_FILE,HOSTNAME)
-    DETAILS = changed_values_json
+    DETAILS = 'changed values are: \t' + str(changed_values_json)
     slack_bot_alert.send_alert_to_slack(ALERT,DETAILS)
     return changed_values_json
 
