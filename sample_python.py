@@ -2,8 +2,17 @@
 import os
 from slackclient import SlackClient
 
+def get_slack_token():
+   tkn_file_h = open('slack_token.txt','r')
+   tkn= tkn_file_h.readline().rstrip()
+   return tkn
+
+
+token = get_slack_token()
+   
+
 #slack_token = os.environ["xoxb-121355730919-9IEodFmVZVwsgOV4GP7yh4F7"]
-sc = SlackClient("xoxb-121355730919-8oFqlfd751dfxhK0j9Q9Rax8")
+sc = SlackClient(token)
 attachments_var = [{
             "text": "Choose a game to play",
             "fallback": "You are unable to choose a game",
@@ -43,7 +52,7 @@ response = sc.api_call(
   "chat.postMessage",
   channel="#oncall_alerts",
   #text="Hello from Python! :tada:"
-  text = "This is my perfect message",
+  text = "This is message is from reading token from file",
   attachments = attachments_var,
   username = 'ops_bot',
   as_user = "true"
