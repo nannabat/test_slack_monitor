@@ -9,7 +9,7 @@ def get_slack_token():
 
 
 
-def send_alert_to_slack():
+def send_alert_to_slack(var_title,details):
     token = get_slack_token()
        
 
@@ -51,8 +51,8 @@ def send_alert_to_slack():
     #         }]
     attachments_var =     [{
  
-                "title": "Values of on file httpd.conf have changed on al1_prod_hadoop1",
-                "text": "Values changed are ",
+                "title": var_title,
+                "text": details,
                 "fields": [
                     {
                         "title": "Priority",
@@ -63,8 +63,7 @@ def send_alert_to_slack():
                 "image_url": "http://my-website.com/path/to/image.jpg",
                 "thumb_url": "http://example.com/path/to/thumb.png",
                 "footer": "Powering Scientific Discovery Since 1974",
-                "footer_icon": "http://www.nersc.gov/assets/Logos/_resampled/CroppedResize130130-NERSClogoslatepmssolid-sm.png",
-                "ts": 123456789
+                "footer_icon": "http://www.nersc.gov/assets/Logos/_resampled/CroppedResize130130-NERSClogoslatepmssolid-sm.png"
             }]
 
     response = sc.api_call(
