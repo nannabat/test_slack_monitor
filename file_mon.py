@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import pyinotify,subprocess,json
+import pyinotify,subprocess,json,slack_bot_alert
 
 ABS_PATH_AGENT_CONF_FILE='/root/spy_script_py/agentconfig.json'
 CONF_MODIFIED=False
@@ -31,7 +31,9 @@ def onChange(ev):
     print 'changed values are:'
     tmp_dict = get_changed_values_dict()
     changed_values_json = json.dumps(tmp_dict, ensure_ascii=False)
-    print json.dumps(changed_values_json, indent=4)
+    #print json.dumps(changed_values_json, indent=4)
+    slack_bot_alert.send_alert_to_slack()
+    return changed_values_json
 
     # for script_name,time_value in tmp_dict.items():
     # 	tmp_script_name = script_name + '.py'
