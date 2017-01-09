@@ -53,7 +53,7 @@ def send_alert_to_slack(var_title,details,tkt_number):
  
                 "title": var_title,
                 "text": details,
-                "author_name": tkt_number
+                "author_name": tkt_number,
                 "author_link": "https://dev27484.service-now.com//nav_to.do?uri=incident.do?sysparm_query=number="+tkt_number
 
                 "fields": [
